@@ -20,6 +20,7 @@ void Menu()
 
    while(opcion!=0)
    {
+        Print("Ingrese una opcion > ");
         cin >> opcion;
  
         if(opcion == 1)
