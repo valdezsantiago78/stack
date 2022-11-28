@@ -20,4 +20,4 @@ int top(Stack st);
 Stack printStack(Stack st);
 
 //Elimina todo el stack.
-Stack destroy(Stack st);
+Stack destroy(Stack & st);

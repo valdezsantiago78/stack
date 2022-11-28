@@ -69,19 +69,21 @@ Stack printStack(Stack st)
     return primero;
 };
 
-Stack destroy(Stack st)
+Stack destroy(Stack & st)
 {
-    if(st != NULL)
+    if(st == NULL)
     {
-        if(st->sig == NULL)
-        {
-            delete st;
-        }
-        else
-        {
-            st->sig = destroy(st->sig);
-            delete st;
-        }
+        std::cout << "Esta vacio" << std::endl;
+        return NULL;
+    }
+    else if(st->sig == NULL)
+    {
+        std::cout << "Existe un solo elemento" << std::endl;
+    }
+    else
+    {
+        std::cout << "Hay mas de un elemento, recorriendo ..." << std::endl;
+        st = destroy(st->sig);
     }
 
     return st;

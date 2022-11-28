@@ -28,9 +28,6 @@ void Menu()
 
    while(opcion!=0)
    {
-
-        ImprimirOpciones();
-
         Print("Ingrese una opcion > ");
         cin >> opcion;
  
@@ -74,10 +71,8 @@ void Menu()
         }
         else if(opcion == 6  && creado)
         {
-        
-            // cola = destroy(cola);
-            Error("Eliminando elemento de stack");
-        
+            cola = destroy(cola);
+
             Succes("Stack eliminado.");
         }  
         else if(opcion == 0)
