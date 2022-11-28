@@ -4,15 +4,23 @@
 
 using namespace std;
 
-void Menu()
+void ImprimirOpciones()
 {
-   Print("Bienvenido a el menu de STACK.");
-   Print("===============================================");
+    
    Print("1. Crear stack");
    Print("2. Ingresar un elemento");
    Print("3. Retornar primer elemento");
    Print("4. Imprimir Stack");
+   Print("5. Borrar el tope");
+   Print("6. Borrar todo");
    Print("0. Salir");
+   Print("===============================================");
+};
+
+void Menu()
+{
+   Print("Bienvenido a el menu de STACK.");
+   Print("===============================================");
    
    int opcion = 99;
    bool creado = false;
@@ -20,6 +28,9 @@ void Menu()
 
    while(opcion!=0)
    {
+
+        ImprimirOpciones();
+
         Print("Ingrese una opcion > ");
         cin >> opcion;
  
@@ -46,8 +57,29 @@ void Menu()
         }
         else if (opcion == 4 && creado)
         {
-            printStack(cola);
+            if(isEmpty(cola))
+            {
+                Error("Stack vacio");
+            }
+            else
+            {
+                Print("Stack completo: ");
+                printStack(cola);
+            }
         }
+        else if(opcion == 5  && creado)
+        {
+            Print("Eliminando primer elemento ...");
+            cola = pop(cola);
+        }
+        else if(opcion == 6  && creado)
+        {
+        
+            // cola = destroy(cola);
+            Error("Eliminando elemento de stack");
+        
+            Succes("Stack eliminado.");
+        }  
         else if(opcion == 0)
         {
             Error("Me re fui...");
@@ -66,4 +98,4 @@ int main()
 {
     Menu();
     return 1;
-}
+};

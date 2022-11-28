@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stack.h"
+#include "helper.h"
 
 struct nodo_stack 
 {
@@ -10,6 +11,11 @@ struct nodo_stack
 Stack crear()
 {
     return NULL;
+};
+
+bool isEmpty(Stack st)
+{
+    return (st == NULL);
 };
 
 Stack push(Stack st, int data)
@@ -30,6 +36,21 @@ Stack push(Stack st, int data)
     }
 };
 
+Stack pop(Stack & st)
+{
+    Stack primero = st;
+    Stack segundo = st->sig;
+
+    if(st != NULL)
+    {
+        delete primero;
+        st = segundo;
+        return st;
+    }
+
+    return primero;
+};
+
 int top(Stack st)
 {
   return st->dato;
@@ -37,23 +58,31 @@ int top(Stack st)
 
 Stack printStack(Stack st)
 {
-    Stack iter = st;
     Stack primero = st;
-    int count = 1;
 
-    while(iter->sig!=NULL)
+    while(st!=NULL)
     {
-        if(count==1)
-        {
-             std::cout << "First -> " << iter->dato << std::endl;
-        }
-        else
-        {
-            std::cout << "Stack -> " << iter->dato << std::endl;
-            iter = iter->sig;
-        }    
-        count=count+1; 
+        std::cout << "Stack -> " << st->dato << std::endl;
+        st = st->sig;
     }
 
     return primero;
+};
+
+Stack destroy(Stack st)
+{
+    if(st != NULL)
+    {
+        if(st->sig == NULL)
+        {
+            delete st;
+        }
+        else
+        {
+            st->sig = destroy(st->sig);
+            delete st;
+        }
+    }
+
+    return st;
 };
