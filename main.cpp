@@ -31,13 +31,13 @@ void Menu()
         Print("Ingrese una opcion > ");
         cin >> opcion;
  
-        if(opcion == 1)
+        if(opcion == 1 && !creado)
         {
             Print("Creando Stack ...");
             creado = true;
             cola = crear();
         }
-        else if (opcion == 2 && creado)
+        else if(opcion == 2 && creado)
         {
             int elem;
             Print("Ingresando un elemento al principio de el Stack...");
@@ -47,12 +47,12 @@ void Menu()
             Succes("Número ingresado!");
 
         }
-        else if (opcion == 3 && creado)
+        else if(opcion == 3 && creado)
         {
             Print("Retornando el elemento de le principio de el Stack...");
             cout << top(cola) << endl;
         }
-        else if (opcion == 4 && creado)
+        else if(opcion == 4 && creado)
         {
             if(isEmpty(cola))
             {
@@ -64,12 +64,19 @@ void Menu()
                 printStack(cola);
             }
         }
-        else if(opcion == 5  && creado)
+        else if(opcion == 5 && creado)
         {
-            Print("Eliminando primer elemento ...");
-            cola = pop(cola);
+            if(cola != NULL)
+            {
+                Print("Eliminando primer elemento ...");
+                cola = pop(cola);
+            }
+            else
+            {
+                Error("No existen elementos para eliminar");
+            }
         }
-        else if(opcion == 6  && creado)
+        else if(opcion == 6 && creado)
         {
             cola = destroy(cola);
 
